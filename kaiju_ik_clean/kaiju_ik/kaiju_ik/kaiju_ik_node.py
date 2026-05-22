@@ -77,7 +77,8 @@ class KaijuIKNode(Node):
         self._tele_elbow = self.create_client(TeleportAbsolute, '/turtle2/teleport_absolute')
         self._tele_wrist = self.create_client(TeleportAbsolute, '/turtle5/teleport_absolute')
         self._tele_claw = self.create_client(TeleportAbsolute, '/turtle1/teleport_absolute')
-        
+        self._tele_shoulder = self.create_client(TeleportAbsolute, '/turtle3/teleport_absolute')       
+
         init_t1, init_t2, init_t3 = math.pi/2, 0.0, 0.0
         self._last_theta = [init_t1, init_t2, init_t3]
         clawX, clawY, _, _, _, _ = forward_kinematics(init_t1, init_t2, init_t3)
@@ -89,6 +90,7 @@ class KaijuIKNode(Node):
         self._target_y = clawY
         self._incoming_x = clawX
         self._incoming_y = clawY
+        
         
         self._anim_t = 1.0
         self._move_start_time = time.monotonic()
@@ -154,10 +156,11 @@ class KaijuIKNode(Node):
                 self._current_x, self._current_y, theta_init=self._last_theta)
             self._last_theta = [t1, t2, t3]
             
-            self._teleport(self._tele_elbow, elbowX, elbowY, t1)
-            self._teleport(self._tele_wrist, wristX, wristY, t1 + t2)
-            self._teleport(self._tele_claw, clawX, clawY, t1 + t2 + t3)
-            
+            self._teleport(self._tele_elbow, elbowX, elbowY, t1 + t2)
+            self._teleport(self._tele_wrist, wristX, wristY, t1 + t2 + t3)
+            target_angle = math.atan2(self._target_y - clawY, self._target_x - clawX)
+            self._teleport(self._tele_claw, clawX, clawY, target_angle)
+            self._teleport(self._tele_shoulder, SHOULDER_X, SHOULDER_Y, t1)
             self._state = 2
             self.create_timer(DT, self._control_loop)
             self.get_logger().info("Bras Jacobien démarré (sans numpy)")
@@ -195,9 +198,11 @@ class KaijuIKNode(Node):
                 self._current_x, self._current_y, theta_init=self._last_theta)
             self._last_theta = [t1, t2, t3]
             
-            self._teleport(self._tele_elbow, elbowX, elbowY, t1)
-            self._teleport(self._tele_wrist, wristX, wristY, t1 + t2)
-            self._teleport(self._tele_claw, clawX, clawY, t1 + t2 + t3)
+            self._teleport(self._tele_elbow, elbowX, elbowY, t1 + t2)
+            self._teleport(self._tele_wrist, wristX, wristY, t1 + t2 + t3)
+            target_angle = math.atan2(self._target_y - clawY, self._target_x - clawX)
+            self._teleport(self._tele_claw, clawX, clawY, target_angle)
+            self._teleport(self._tele_shoulder, SHOULDER_X, SHOULDER_Y, t1)
             
             if self._anim_t >= 1.0:
                 self._pausing = True
