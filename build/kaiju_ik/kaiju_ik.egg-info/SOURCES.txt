@@ -1,0 +1,15 @@
+package.xml
+setup.cfg
+setup.py
+kaiju_ik/__init__.py
+kaiju_ik/kaiju_ik_node.py
+kaiju_ik/target_spawner.py
+kaiju_ik.egg-info/PKG-INFO
+kaiju_ik.egg-info/SOURCES.txt
+kaiju_ik.egg-info/dependency_links.txt
+kaiju_ik.egg-info/entry_points.txt
+kaiju_ik.egg-info/requires.txt
+kaiju_ik.egg-info/top_level.txt
+kaiju_ik.egg-info/zip-safe
+launch/kaiju_ik.launch.py
+resource/kaiju_ik

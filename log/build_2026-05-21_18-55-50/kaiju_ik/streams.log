@@ -1,0 +1,19 @@
+[0.840s] Invoking command in '/home/ivan/Ivan/ROS2-project/build/kaiju_ik': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/ivan/Ivan/ROS2-project/build/kaiju_ik/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build --no-deps symlink_data
+[1.177s] running develop
+[1.320s] running egg_info
+[1.333s] writing kaiju_ik.egg-info/PKG-INFO
+[1.334s] writing dependency_links to kaiju_ik.egg-info/dependency_links.txt
+[1.334s] writing entry points to kaiju_ik.egg-info/entry_points.txt
+[1.335s] writing requirements to kaiju_ik.egg-info/requires.txt
+[1.335s] writing top-level names to kaiju_ik.egg-info/top_level.txt
+[1.365s] reading manifest file 'kaiju_ik.egg-info/SOURCES.txt'
+[1.366s] writing manifest file 'kaiju_ik.egg-info/SOURCES.txt'
+[1.389s] running build_ext
+[1.389s] Creating /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages/kaiju-ik.egg-link (link to .)
+[1.390s] Installing kaiju_ik_node script to /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/kaiju_ik
+[1.390s] Installing mobile_controller script to /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/kaiju_ik
+[1.390s] Installing target_mover script to /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/kaiju_ik
+[1.390s] 
+[1.390s] Installed /home/ivan/Ivan/ROS2-project/build/kaiju_ik
+[1.390s] running symlink_data
+[1.409s] Invoked command in '/home/ivan/Ivan/ROS2-project/build/kaiju_ik' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/ivan/Ivan/ROS2-project/build/kaiju_ik/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build --no-deps symlink_data

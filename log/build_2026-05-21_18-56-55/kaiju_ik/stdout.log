@@ -1,0 +1,17 @@
+running develop
+running egg_info
+writing kaiju_ik.egg-info/PKG-INFO
+writing dependency_links to kaiju_ik.egg-info/dependency_links.txt
+writing entry points to kaiju_ik.egg-info/entry_points.txt
+writing requirements to kaiju_ik.egg-info/requires.txt
+writing top-level names to kaiju_ik.egg-info/top_level.txt
+reading manifest file 'kaiju_ik.egg-info/SOURCES.txt'
+writing manifest file 'kaiju_ik.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages/kaiju-ik.egg-link (link to .)
+Installing kaiju_ik_node script to /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/kaiju_ik
+Installing mobile_controller script to /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/kaiju_ik
+Installing target_mover script to /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/kaiju_ik
+
+Installed /home/ivan/Ivan/ROS2-project/build/kaiju_ik
+running symlink_data

@@ -1,0 +1,3 @@
+[console_scripts]
+kaiju_ik_node = kaiju_ik.kaiju_ik_node:main
+target_mover = kaiju_ik.target_spawner:main
