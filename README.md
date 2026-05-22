@@ -49,6 +49,6 @@ Where:
 sudo apt install ros-humble-turtlesim
 
 Steps to launch:
- colcon build --packages-select kaiju_ik --symlink-install
-source /opt/ros/kilted/setup.bash
-ros2 launch kaiju_ik kaiju_ik.launch.py
+- colcon build --packages-select kaiju_ik --symlink-install
+- source /opt/ros/kilted/setup.bash
+- ros2 launch kaiju_ik kaiju_ik.launch.py
