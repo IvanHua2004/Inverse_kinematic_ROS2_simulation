@@ -26,7 +26,7 @@ def forward_kinematics(theta1, theta2, theta3):
     clawY = wristY + L3 * math.sin(theta1 + theta2 + theta3)
     return clawX, clawY, elbowX, elbowY, wristX, wristY
 
-def solve_ik_jacobian(target_x, target_y, theta_init=None, max_iter=50, tol=1e-2, step_gain=0.3):
+def solve_ik_jacobian(target_x, target_y, theta_init=None, max_iter=50, tolerance=1e-2, step_gain=0.3):
     if theta_init is None:
         theta1, theta2, theta3 = math.pi/2, 0.0, 0.0 
     else:
@@ -37,7 +37,7 @@ def solve_ik_jacobian(target_x, target_y, theta_init=None, max_iter=50, tol=1e-2
         dx = target_x - clawX
         dy = target_y - clawY
         error = math.hypot(dx, dy)
-        if error < tol:
+        if error < tolerance:
             break
         
         s1 = math.sin(theta1)
@@ -53,30 +53,13 @@ def solve_ik_jacobian(target_x, target_y, theta_init=None, max_iter=50, tol=1e-2
         J21 = L1*c1 + L2*c12 + L3*c123
         J22 = L2*c12 + L3*c123
         J23 = L3*c123
-        
-        JJ11 = J11*J11 + J21*J21
-        JJ12 = J11*J12 + J21*J22
-        JJ21 = JJ12
-        JJ22 = J12*J12 + J22*J22
 
-        matrix = np.array([[JJ11, JJ12], [JJ21, JJ22]])
+        J = np.array([[J11, J12, J13], [J21, J22, J23]])
+        error = np.array([dx, dy])
+        J_pinv = np.linalg.pinv(J)
+        dtheta = step_gain * (J_pinv @ error)
+        dtheta1, dtheta2, dtheta3 = dtheta[0], dtheta[1], dtheta[2]
 
-        det = np.linalg.det(matrix)
-        det_int = int(round(det))
-
-        if abs(det_int) < 1e-6:
-            dtheta1 = step_gain * (J11*dx + J21*dy)
-            dtheta2 = step_gain * (J12*dx + J22*dy)
-            dtheta3 = step_gain * (J13*dx + J23*dy)
-        else:
-            invJJ11 = JJ22 / det_int
-            invJJ12 = -JJ12 / det_int
-            invJJ21 = -JJ21 / det_int
-            invJJ22 = JJ11 / det_int
-            
-            dtheta1 = step_gain * (invJJ11 * (J11*dx + J21*dy) + invJJ12 * (J12*dx + J22*dy))
-            dtheta2 = step_gain * (invJJ21 * (J11*dx + J21*dy) + invJJ22 * (J12*dx + J22*dy))
-            dtheta3 = step_gain * (J13*dx + J23*dy)  
         theta1 += dtheta1
         theta2 += dtheta2
         theta3 += dtheta3
