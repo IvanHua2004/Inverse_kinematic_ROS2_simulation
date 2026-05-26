@@ -1,0 +1,45 @@
+[1.241s] Invoking command in '/home/ivan/Ivan/ROS2-project/build/kaiju_ik': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/ivan/Ivan/ROS2-project/build/kaiju_ik/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build
+[1.642s] running develop
+[1.819s] Removing /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages/kaiju-ik.egg-link (link to .)
+[1.844s] Invoked command in '/home/ivan/Ivan/ROS2-project/build/kaiju_ik' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/ivan/Ivan/ROS2-project/build/kaiju_ik/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build
+[1.845s] Invoking command in '/home/ivan/Ivan/ROS2-project/kaiju_ik_clean/kaiju_ik': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/ivan/Ivan/ROS2-project/build/kaiju_ik/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/kaiju_ik build --build-base /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build install --record /home/ivan/Ivan/ROS2-project/build/kaiju_ik/install.log --single-version-externally-managed install_data --force
+[2.180s] running egg_info
+[2.207s] writing ../../build/kaiju_ik/kaiju_ik.egg-info/PKG-INFO
+[2.215s] writing dependency_links to ../../build/kaiju_ik/kaiju_ik.egg-info/dependency_links.txt
+[2.215s] writing entry points to ../../build/kaiju_ik/kaiju_ik.egg-info/entry_points.txt
+[2.215s] writing requirements to ../../build/kaiju_ik/kaiju_ik.egg-info/requires.txt
+[2.215s] writing top-level names to ../../build/kaiju_ik/kaiju_ik.egg-info/top_level.txt
+[2.258s] reading manifest file '../../build/kaiju_ik/kaiju_ik.egg-info/SOURCES.txt'
+[2.260s] writing manifest file '../../build/kaiju_ik/kaiju_ik.egg-info/SOURCES.txt'
+[2.260s] running build
+[2.260s] running build_py
+[2.260s] creating /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build
+[2.261s] creating /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build/lib
+[2.262s] creating /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build/lib/kaiju_ik
+[2.262s] copying kaiju_ik/arm_overlay.py -> /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build/lib/kaiju_ik
+[2.262s] copying kaiju_ik/kaiju_ik_node.py -> /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build/lib/kaiju_ik
+[2.263s] copying kaiju_ik/__init__.py -> /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build/lib/kaiju_ik
+[2.263s] copying kaiju_ik/target_spawner.py -> /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build/lib/kaiju_ik
+[2.263s] running install
+[2.268s] running install_lib
+[2.288s] creating /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages/kaiju_ik
+[2.288s] copying /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build/lib/kaiju_ik/arm_overlay.py -> /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages/kaiju_ik
+[2.288s] copying /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build/lib/kaiju_ik/kaiju_ik_node.py -> /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages/kaiju_ik
+[2.289s] copying /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build/lib/kaiju_ik/__init__.py -> /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages/kaiju_ik
+[2.289s] copying /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build/lib/kaiju_ik/target_spawner.py -> /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages/kaiju_ik
+[2.290s] byte-compiling /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages/kaiju_ik/arm_overlay.py to arm_overlay.cpython-312.pyc
+[2.293s] byte-compiling /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages/kaiju_ik/kaiju_ik_node.py to kaiju_ik_node.cpython-312.pyc
+[2.294s] byte-compiling /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages/kaiju_ik/__init__.py to __init__.cpython-312.pyc
+[2.294s] byte-compiling /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages/kaiju_ik/target_spawner.py to target_spawner.cpython-312.pyc
+[2.295s] running install_data
+[2.295s] copying resource/kaiju_ik -> /home/ivan/Ivan/ROS2-project/install/kaiju_ik/share/ament_index/resource_index/packages
+[2.296s] copying package.xml -> /home/ivan/Ivan/ROS2-project/install/kaiju_ik/share/kaiju_ik
+[2.297s] copying launch/kaiju_ik.launch.py -> /home/ivan/Ivan/ROS2-project/install/kaiju_ik/share/kaiju_ik/launch
+[2.299s] running install_egg_info
+[2.318s] Copying ../../build/kaiju_ik/kaiju_ik.egg-info to /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages/kaiju_ik-0.1.0-py3.12.egg-info
+[2.319s] running install_scripts
+[2.512s] Installing arm_overlay script to /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/kaiju_ik
+[2.512s] Installing kaiju_ik_node script to /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/kaiju_ik
+[2.512s] Installing target_mover script to /home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/kaiju_ik
+[2.512s] writing list of installed files to '/home/ivan/Ivan/ROS2-project/build/kaiju_ik/install.log'
+[2.543s] Invoked command in '/home/ivan/Ivan/ROS2-project/kaiju_ik_clean/kaiju_ik' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/ivan/Ivan/ROS2-project/build/kaiju_ik/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ivan/Ivan/ROS2-project/install/kaiju_ik/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/kaiju_ik build --build-base /home/ivan/Ivan/ROS2-project/build/kaiju_ik/build install --record /home/ivan/Ivan/ROS2-project/build/kaiju_ik/install.log --single-version-externally-managed install_data --force

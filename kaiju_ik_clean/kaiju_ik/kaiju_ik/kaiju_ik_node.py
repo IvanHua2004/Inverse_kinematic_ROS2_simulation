@@ -53,11 +53,11 @@ def solve_ik_jacobian(target_x, target_y, theta_init=None, max_iter=50, toleranc
         J21 = L1*c1 + L2*c12 + L3*c123
         J22 = L2*c12 + L3*c123
         J23 = L3*c123
-
-        J = np.array([[J11, J12, J13], [J21, J22, J23]])
+        
+        matrix = np.array([[J11, J12, J13], [J21, J22, J23]])
         error = np.array([dx, dy])
-        J_pinv = np.linalg.pinv(J)
-        dtheta = step_gain * (J_pinv @ error)
+        J_pninv = np.linalg.pinv(matrix)
+        dtheta = step_gain * (J_pninv @ error)
         dtheta1, dtheta2, dtheta3 = dtheta[0], dtheta[1], dtheta[2]
 
         theta1 += dtheta1
@@ -77,8 +77,9 @@ class KaijuIKNode(Node):
         self._tele_elbow = self.create_client(TeleportAbsolute, '/turtle2/teleport_absolute')
         self._tele_wrist = self.create_client(TeleportAbsolute, '/turtle5/teleport_absolute')
         self._tele_claw = self.create_client(TeleportAbsolute, '/turtle1/teleport_absolute')
-        self._tele_shoulder = self.create_client(TeleportAbsolute, '/turtle3/teleport_absolute')       
-
+        self._tele_shoulder = self.create_client(TeleportAbsolute, '/turtle3/teleport_absolute')
+        self._claw_angle = math.pi/2
+        
         init_t1, init_t2, init_t3 = math.pi/2, 0.0, 0.0
         self._last_theta = [init_t1, init_t2, init_t3]
         clawX, clawY, _, _, _, _ = forward_kinematics(init_t1, init_t2, init_t3)
@@ -91,7 +92,6 @@ class KaijuIKNode(Node):
         self._incoming_x = clawX
         self._incoming_y = clawY
         
-        
         self._anim_t = 1.0
         self._move_start_time = time.monotonic()
         self._pausing = False
@@ -102,6 +102,16 @@ class KaijuIKNode(Node):
         self._init_timer = self.create_timer(0.1, self._state_machine)
         self.create_subscription(Point, '/arm_target_input', self._target_cb, 10)
     
+    def _update_claw_angle(self, clawX, clawY):
+        dx = self._target_x - clawX
+        dy = self._target_y - clawY
+        if math.hypot(dx, dy) > 0.02:
+            desired = math.atan2(dy, dx)
+            diff = (desired - self._claw_angle + math.pi) % (2 * math.pi) - math.pi
+            self._claw_angle += 0.02 * diff 
+        return self._claw_angle
+
+
     def _target_cb(self, msg):
         self._incoming_x = msg.x
         self._incoming_y = msg.y
@@ -153,14 +163,15 @@ class KaijuIKNode(Node):
             self._tele_claw.service_is_ready()):
             
             elbowX, elbowY, wristX, wristY, clawX, clawY, t1, t2, t3 = solve_ik_jacobian(
-                self._current_x, self._current_y, theta_init=self._last_theta)
+            self._current_x, self._current_y, theta_init=self._last_theta)
             self._last_theta = [t1, t2, t3]
             
+            self._teleport(self._tele_shoulder, SHOULDER_X, SHOULDER_Y, t1)
             self._teleport(self._tele_elbow, elbowX, elbowY, t1 + t2)
             self._teleport(self._tele_wrist, wristX, wristY, t1 + t2 + t3)
-            target_angle = math.atan2(self._target_y - clawY, self._target_x - clawX)
-            self._teleport(self._tele_claw, clawX, clawY, target_angle)
-            self._teleport(self._tele_shoulder, SHOULDER_X, SHOULDER_Y, t1)
+
+            self._teleport(self._tele_claw, clawX, clawY, self._update_claw_angle(clawX, clawY))
+            
             self._state = 2
             self.create_timer(DT, self._control_loop)
             self.get_logger().info("Bras Jacobien démarré (sans numpy)")
@@ -198,11 +209,11 @@ class KaijuIKNode(Node):
                 self._current_x, self._current_y, theta_init=self._last_theta)
             self._last_theta = [t1, t2, t3]
             
+            self._teleport(self._tele_shoulder, SHOULDER_X, SHOULDER_Y, t1)
             self._teleport(self._tele_elbow, elbowX, elbowY, t1 + t2)
             self._teleport(self._tele_wrist, wristX, wristY, t1 + t2 + t3)
-            target_angle = math.atan2(self._target_y - clawY, self._target_x - clawX)
-            self._teleport(self._tele_claw, clawX, clawY, target_angle)
-            self._teleport(self._tele_shoulder, SHOULDER_X, SHOULDER_Y, t1)
+            self._teleport(self._tele_claw, clawX, clawY, self._update_claw_angle(clawX, clawY))
+            
             
             if self._anim_t >= 1.0:
                 self._pausing = True

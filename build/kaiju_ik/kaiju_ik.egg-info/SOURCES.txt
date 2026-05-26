@@ -1,6 +1,13 @@
 package.xml
 setup.cfg
 setup.py
+../../build/kaiju_ik/kaiju_ik.egg-info/PKG-INFO
+../../build/kaiju_ik/kaiju_ik.egg-info/SOURCES.txt
+../../build/kaiju_ik/kaiju_ik.egg-info/dependency_links.txt
+../../build/kaiju_ik/kaiju_ik.egg-info/entry_points.txt
+../../build/kaiju_ik/kaiju_ik.egg-info/requires.txt
+../../build/kaiju_ik/kaiju_ik.egg-info/top_level.txt
+../../build/kaiju_ik/kaiju_ik.egg-info/zip-safe
 kaiju_ik/__init__.py
 kaiju_ik/kaiju_ik_node.py
 kaiju_ik/target_spawner.py
